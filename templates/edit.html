@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Edit User</title>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between mt-5">
+            <div class="card mb-5">
+                <div class="card-header">
+                    <h1 class="mb-0">Edit User {{ prepopulated_user.id }}</h1>
+                </div>
+                <div class="card-body">
+                    <form action="/users/{{ prepopulated_user.id }}/update_user" method="post">
+                        <div class="mb-3">
+                            <label for="fname" class="form-label">First Name:</label>
+                            <input type="text" name="fname" id="fname" value="{{ prepopulated_user.first_name }}" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lname" class="form-label">Last Name:</label>
+                            <input type="text" name="lname" id="lname" value="{{ prepopulated_user.last_name }}" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" name="email" id="email" value="{{ prepopulated_user.email }}" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="submit" value="Update User" class="btn btn-success">
+                            <p><a href="/users/{{ prepopulated_user.id}}">Show User</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <a href="/users" class="mb-0 me-5">Home</a>
+        </div>
+    </div>
+</body>
+</html>
